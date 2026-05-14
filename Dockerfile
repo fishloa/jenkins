@@ -23,8 +23,7 @@ RUN apt-get update \
 # bun + bunx — used by `bun install`, `bun run lint:fetch`, `bunx <tool>`,
 # and `make contracts-check`. Install to /usr/local/bin so both names are
 # on PATH for every user/agent without touching home dirs.
-ARG BUN_VERSION=latest
-RUN curl -fsSL https://bun.sh/install | bash -s "${BUN_VERSION}" \
+RUN curl -fsSL https://bun.sh/install | bash \
  && mv /root/.bun/bin/bun /usr/local/bin/bun \
  && ln -sf /usr/local/bin/bun /usr/local/bin/bunx \
  && chmod 0755 /usr/local/bin/bun \
